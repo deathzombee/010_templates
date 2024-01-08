@@ -1,0 +1,29 @@
+typedef struct {
+    uchar signature[4]; // Magic number
+    uint32 clockRate;
+    uint32 programCounter;
+    uint32 release;
+    uint32 crc1;
+    uint32 crc2;
+    uint32 unknown1[2];
+    uchar image[20];
+    uint32 unknown2;
+    uint16 unknown3;
+    uchar unknown4;
+    uchar manufacturerID;
+    uchar cartridgeID[2];
+    uchar country;
+    uchar unknown5;
+} N64Header;
+
+typedef struct {
+    uchar bootCode[0xFC0];
+} BootCode;
+
+typedef struct {
+    N64Header header;
+    BootCode boot;
+    // You can add more specific structures here for game data, checksum, etc.
+} N64ROM;
+
+N64ROM rom;
